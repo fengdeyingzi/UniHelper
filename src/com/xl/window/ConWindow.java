@@ -25,6 +25,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import com.xl.util.ToPxUtil;
+
 
 
 
@@ -32,7 +34,7 @@ public class ConWindow extends JFrame{
 
 	JTextArea editArea;
 	JTextField textField;
-	JButton button_tojava;
+	JButton button_topx;
 	JButton button_tokotlin;
 	JButton button_toswift;
 	JButton button_toflutter;
@@ -62,9 +64,9 @@ public class ConWindow extends JFrame{
 		 scrollPane= new JScrollPane(editArea);
 		 //scrollPane.add(editArea);
 		 
-		 button_tojava= new JButton("xml转java");
+		 button_topx= new JButton("转换px");
 		//设置对齐方式 不然会出问题
-		button_tojava.setAlignmentX((float) 0.5);
+		button_topx.setAlignmentX((float) 0.5);
 		
 		button_tokotlin= new JButton("xml转kt");
 		button_tokotlin.setAlignmentX(0.5f);
@@ -80,7 +82,7 @@ public class ConWindow extends JFrame{
 		 box_v.add(textField);
 		box_v.add(scrollPane);
 		Box box_h= Box.createHorizontalBox();
-		box_h.add(button_tojava);
+		box_h.add(button_topx);
 		box_h.add(Box.createRigidArea(new Dimension(10, 20)));
 		box_h.add(button_tokotlin);
 		box_h.add(Box.createRigidArea(new Dimension(10, 20)));
@@ -92,14 +94,16 @@ public class ConWindow extends JFrame{
 		mainJPanel.add(box_v);
 		//设置最大宽高 用于适应布局
 		//button.setPreferredSize(new Dimension(400, 60));
-		button_tojava.setMaximumSize(new Dimension(screen_w,60));
+		button_topx.setMaximumSize(new Dimension(screen_w,60));
 		button_tokotlin.setMaximumSize(new Dimension(screen_w, 60));
 		button_toswift.setMaximumSize(new Dimension(screen_w, 60));
 		button_toflutter.setMaximumSize(new Dimension(screen_w, 60));
-		button_tojava.addActionListener(new ActionListener() {
+		button_topx.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				String text = editArea.getText();
+				String retext = ToPxUtil.topx(text);
+				editArea.setText(retext);
 			}
 		});
 		

@@ -344,6 +344,7 @@ public class Str
 	public static int atoi(String text)
 	{
     if(text==null)return 0;
+//    System.out.println("atoi "+text);
 		int math = 0;
 		int ptr=0;
 		boolean isf=false;
